@@ -12,7 +12,7 @@ app.use(cors());
 
 app.post("/pay", async (req, res) => {
     try {
-       
+
         const { name } = req.body;
         if (name) return res.status(400).json({ message: "Please enter a name" });
 
@@ -23,7 +23,7 @@ app.post("/pay", async (req, res) => {
             payment_method_types: ["card"],
             metadata: { name },
         });
-        
+
         const clientSecret = paymentIntent.client_secret;
         res.json({ message: "Payment initiated", clientSecret });
     } catch (err) {
